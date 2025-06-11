@@ -4,7 +4,6 @@ import HeroSection from "./hero/page";
 export default function Home() {
   return (
     <>
-         <HeroSection />
          <div className="w-screen h-screen"></div>
     </>
   );
