@@ -2,7 +2,7 @@ const About = () => {
   return (
     <section className="w-screen h-auto lg:h-[100vh] flex flex-col items-center justify-center bg-white text-black mt-10">
       <div className="w-full flex flex-col justify-center items-center p-4 lg:h-1/2">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl  font-bold py-2 text-center">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl  font-bold text-center mt-2 z-100">
           About <span className="text-[#FF1F52]">OOFDI</span>
         </h1>
         <p className="text-base sm:text-lg md:text-2xl lg:text-3xl text-center pb-10 max-w-4xl">

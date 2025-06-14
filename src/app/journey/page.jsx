@@ -34,7 +34,7 @@ const Journey = () => {
           if(isMobile){
             setPosition(160);
           }else{
-          setPosition(1100);
+            setPosition(1100);
           }
 
         }
@@ -111,7 +111,7 @@ const Journey = () => {
               <img
                 src="./images/oofdiman1.png"
                 alt="Oofdi Man"
-                className="w-full scale-50 translate-y-10"
+                className="w-full scale-40 translate-y-10"
               />
             </div>
           </div>
