@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${monoSans.variable}`}
+        className={`${monoSans.variable} overflow-x-hidden`}
       >
         {children}
       </body>
