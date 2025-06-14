@@ -31,12 +31,11 @@ const Journey = () => {
         setStep(steps[currentIndex]);
 
         if (steps[currentIndex] === "delivered") {
-          if(isMobile){
-            setPosition(160);
-          }else{
+          if (isMobile) {
+            setPosition(150);
+          } else {
             setPosition(1100);
           }
-
         }
       } else {
         clearInterval(interval);
@@ -96,23 +95,26 @@ const Journey = () => {
         </header>
 
         <main className="w-full h-1/2 flex flex-col gap-6 overflow-hidden">
-          <div className="w-full h-1/4 relative" id="shop-person-section">
-            <div className="w-3/4 absolute z-2 h-full">
+          <div
+            className="w-full h-1/4 flex justify-center relative"
+            id="shop-person-section"
+          >
+            <div className="w-3/4 z-2 h-full relative">
               <img
                 src="./images/shopbg.png"
                 alt="Shop Background"
                 className="h-full w-full "
               />
-            </div>
-            <div
-              className="absolute z-10 h-fit bottom-0 transition-all duration-2500 ease-in-out"
-              style={{ transform: `translateX(${position}px)` }}
-            >
-              <img
-                src="./images/oofdiman1.png"
-                alt="Oofdi Man"
-                className="w-full scale-40 translate-y-10"
-              />
+              <div
+                className="absolute z-10 h-fit bottom-0 transition-all duration-2500 ease-in-out"
+                style={{ transform: `translateX(${position}px)` }}
+              >
+                <img
+                  src="./images/oofdiman1.png"
+                  alt="Oofdi Man"
+                  className="w-full scale-40 translate-y-10"
+                />
+              </div>
             </div>
           </div>
 
