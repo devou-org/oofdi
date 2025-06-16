@@ -13,8 +13,8 @@ import Journey from "./journey/page";
 export default function Page() {
   return (
     <>
-       <HeroSection />
-       <About />
+      <HeroSection />
+      <About />
       <Journey />
       <WhyUs />
       <MoreThanFood />

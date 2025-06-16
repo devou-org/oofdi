@@ -42,8 +42,8 @@ const HeroSection = () => {
     [0.4, 0.5],
     isMobile ? [1, 1] : [1, 0.95]
   );
-  const opacity = useTransform(scrollYProgress, [0.4, 0.6], [1, 0]);
-  const newopacity = useTransform(scrollYProgress, [0.65, .75], [0, 1.5]);
+  const opacity = useTransform(scrollYProgress, [0.4, 0.6],isMobile?[1,1]:[1, 0]);
+  const newopacity = useTransform(scrollYProgress, [0.65, .75],isMobile?[1,1]: [0, 1.5]);
   const scale = useTransform(scrollYProgress, [0.6, .7], [0, 1]);
 
 
@@ -51,7 +51,7 @@ const HeroSection = () => {
     <section
       id="hero-section"
       ref={sectionRef}
-      className="relative w-screen h-[200vh] md:h-[300vh]  "
+      className="relative w-screen h-[100vh] md:h-[300vh]  "
       aria-label="Oofdi Food Delivery Hero Section"
     >
       <div className="sticky top-0 w-screen h-screen flex flex-col md:flex-row">
@@ -89,7 +89,7 @@ const HeroSection = () => {
           </motion.div>
           <motion.div
             style={{ opacity: newopacity,scale }}
-            className="w-screen h-1/2 flex flex-col justify-center md:justify-end items-center absolute top-0 left-0 -z-10"
+            className=" hidden md:flex w-screen h-1/2  flex-col justify-center md:justify-end items-center absolute top-0 left-0 -z-10"
           >
             <div className="h-1/2 flex flex-col items-center justify-start">
               <img className="w-20 md:w-40 h-20 md:h-40" src="./images/oofdilogo.jpg"></img>
@@ -128,7 +128,7 @@ const HeroSection = () => {
 
         {/* Right Image (hidden on small screens) */}
         <motion.div
-          className={`h-screen ${isMobile ? "block" : "hidden md:block"}`}
+          className={`h-screen  ${isMobile ? "block" : "hidden md:block"}`}
           style={{
             width: isMobile ? "100%" : "50%",
             opacity: isMobile ? 1 : rightOpacity,

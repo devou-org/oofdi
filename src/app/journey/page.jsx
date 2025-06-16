@@ -86,7 +86,7 @@ const Journey = () => {
 
   return (
     <>
-      <section className="w-screen h-[120vh] md:h-[150vh] flex flex-col justify-start px-4 md:px-0">
+      <section className="w-screen h-[120vh] md:h-[140vh] flex flex-col justify-center  px-4 md:px-0">
         <header className="w-full h-1/4 flex justify-center items-center text-center">
           <h1 className="text-4xl md:text-6xl  font-bold leading-tight">
             Your Journey to <span className="text-[#FF1F52]">Food</span>
