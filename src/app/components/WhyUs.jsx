@@ -81,7 +81,7 @@ export default function WhyUs() {
             ))}
           </div>
 
-          <div className="flex gap-4 mt-2 flex-wrap">
+          <div className="flex gap-4 mt-2 flex-nowrap justify-center items-center">
             <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
               <a
                 href="https://play.google.com/store"
@@ -93,7 +93,7 @@ export default function WhyUs() {
                   alt="Get it on Google Play"
                   width={140}
                   height={42}
-                  className="w-auto h-12 mt-4 ml-4"
+                  className="w-auto h-12 mt-4"
                 />
               </a>
             </div>
@@ -109,7 +109,7 @@ export default function WhyUs() {
                   alt="Download on the App Store"
                   width={200}
                   height={60}
-                  className="w-auto h-20 mb-20"
+                  className="w-auto h-20 mb-5 mt-9 "
                 />
               </a>
             </div>

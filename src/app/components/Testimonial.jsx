@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const testimonials = [
@@ -34,6 +34,14 @@ export default function TestimonialSection() {
     setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    }, 3000); // auto-switch every 3 seconds
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, []);
+
   return (
     <section className="bg-white py-16 flex flex-col items-center min-h-screen justify-center px-4">
       <div className="mb-8 w-full text-center">
@@ -66,7 +74,7 @@ export default function TestimonialSection() {
                 width: "100px",
                 height: "100px",
                 borderRadius: "50%",
-                marginTop:"-20px"
+                marginTop: "-20px",
               }}
             >
               <img
@@ -76,10 +84,17 @@ export default function TestimonialSection() {
               />
             </div>
 
-            {/* Star Bar */}
+            {/* Star Bar (updated here) */}
             <div className="border-8 border-pink-200 bg-white px-6 py-2 mt-3 md:mt-0 md:ml-[-4px] flex items-center justify-center min-w-[180px] md:min-w-[260px] h-12 md:h-16">
-              {Array.from({ length: testimonials[current].stars }).map((_, i) => (
-                <span key={i} className="text-pink-500 text-2xl md:text-4xl mx-1 md:mx-2">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <span
+                  key={i}
+                  className={`text-2xl md:text-4xl mx-1 md:mx-2 ${
+                    i < testimonials[current].stars
+                      ? "text-pink-500"
+                      : "text-pink-200"
+                  }`}
+                >
                   &#9733;
                 </span>
               ))}
