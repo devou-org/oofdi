@@ -38,7 +38,7 @@ export default function TestimonialSection() {
     <section className="bg-white py-16 flex flex-col items-center min-h-screen justify-center">
       <div className="mb-8 w-full text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-2">
-          Your <span className="text-pink-600">Voices</span>, Our Fuel
+          Your <span  style={{ color: "#FF1F52" }} >Voices</span>, Our Fuel
         </h2>
         <p className="text-3xl md:text-4xl font-bold max-w-full mx-auto">
           Our users share their experiences with Oofdi’s fast, fresh, and reliable<br />delivery.

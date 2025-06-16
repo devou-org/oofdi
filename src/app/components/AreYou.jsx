@@ -94,7 +94,7 @@ export default function AreYou() {
           {/* Heading and Description Centered */}
           <div className="text-left mb-12">
             <h3 className="text-5xl font-bold mb-4">
-              Are You A <span className="text-pink-600">Rider</span>?
+              Are You A <span  style={{ color: "#FF1F52" }}>Rider</span>?
             </h3>
             <p className="font-bold text-[30px] w-6xl  mr-60">
               Deliver orders efficiently with real-time tracking and optimized routes.
