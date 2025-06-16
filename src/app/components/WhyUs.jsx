@@ -39,7 +39,7 @@ export default function WhyUs() {
     <section className="bg-white text-black py-16 px-6 md:px-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
         {/* Left: stacked images */}
-        <div className="h-[300px] flex flex-col">
+        <div className="flex flex-col h-auto">
           <div className="flex-1">
             <img
               src="/images/veg.jpg"
@@ -66,7 +66,7 @@ export default function WhyUs() {
         {/* Right: heading, features, and app store buttons */}
         <div className="flex flex-col justify-between h-full">
           <h2 className="text-3xl md:text-5xl font-bold mb-14 mt-2">
-            Why <span className="text-pink-600">US</span> ?
+            Why <span style={{ color: "#FF1F52" }}>US</span> ?
           </h2>
 
           <div className="space-y-4 mb-6">
@@ -76,12 +76,12 @@ export default function WhyUs() {
                 className="bg-pink-50 p-4 rounded-xl shadow-sm flex items-center gap-3"
               >
                 <span>{feature.icon}</span>
-                <p className="font-bold text-2xl">{feature.text}</p>
+                <p className="font-bold text-xl md:text-2xl">{feature.text}</p>
               </div>
             ))}
           </div>
 
-          <div className="flex gap-4 mt-2">
+          <div className="flex gap-4 mt-2 flex-nowrap justify-center items-center">
             <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
               <a
                 href="https://play.google.com/store"
@@ -109,7 +109,7 @@ export default function WhyUs() {
                   alt="Download on the App Store"
                   width={200}
                   height={60}
-                  className="w-auto h-20 mb-20"
+                  className="w-auto h-20 mb-5 mt-9 "
                 />
               </a>
             </div>
