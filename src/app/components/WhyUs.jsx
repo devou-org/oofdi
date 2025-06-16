@@ -93,7 +93,7 @@ export default function WhyUs() {
                   alt="Get it on Google Play"
                   width={140}
                   height={42}
-                  className="w-auto h-12 mt-4"
+                  className="w-auto h-12 mt-4 ml-4"
                 />
               </a>
             </div>

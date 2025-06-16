@@ -21,12 +21,23 @@ export default function AreYou() {
             <h3 className="text-5xl font-bold mb-6 text-left">
               Are You A <span className="text-pink-600">Vendor</span>?
             </h3>
+
             <p
               className="font-bold mb-10 text-left text-[30px] w-full md:max-w-5xl"
               style={{ lineHeight: "1.2" }}
             >
               Manage your menu, receive orders instantly, and grow your business with Oofdi.
             </p>
+            {/* Mobile Image */}
+            <div className="block md:hidden mb-6">
+              <Image
+                src="/images/Vendor.jpg"
+                alt="Vendor"
+                width={420}
+                height={500}
+                className=" object-cover w-full h-auto"
+              />
+            </div>
             <div className="space-y-4 mb-10">
               <div className="flex items-center bg-pink-50 rounded-2xl px-6 py-5 font-bold text-xl">
                 <ClipboardList className="w-8 h-8 text-pink-600 mr-4" />
@@ -79,8 +90,8 @@ export default function AreYou() {
             </div>
           </div>
 
-          {/* Right: Image */}
-          <div className="flex justify-center items-start mt-45">
+          {/* Right: Image (desktop only) */}
+          <div className="hidden md:flex justify-center items-start mt-45">
             <Image
               src="/images/Vendor.jpg"
               alt="Vendor"

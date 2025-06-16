@@ -35,15 +35,16 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="bg-white py-16 flex flex-col items-center min-h-screen justify-center">
+    <section className="bg-white py-16 flex flex-col items-center min-h-screen justify-center px-4">
       <div className="mb-8 w-full text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-2">
-          Your <span  style={{ color: "#FF1F52" }} >Voices</span>, Our Fuel
+          Your <span style={{ color: "#FF1F52" }}>Voices</span>, Our Fuel
         </h2>
         <p className="text-3xl md:text-4xl font-bold max-w-full mx-auto">
           Our users share their experiences with Oofdi’s fast, fresh, and reliable<br />delivery.
         </p>
       </div>
+
       <div className="relative flex flex-col items-center w-full max-w-5xl mx-auto mt-10">
         {/* Left Arrow */}
         <button
@@ -53,19 +54,19 @@ export default function TestimonialSection() {
         >
           &#60;
         </button>
+
         {/* Testimonial Card */}
         <div className="relative w-full">
           {/* Avatar + Star Bar */}
-          <div className="absolute -top-22 left-1 flex items-center z-10">
+          <div className="absolute -top-24 left-1/2 md:left-4 flex flex-col md:flex-row items-center md:items-start z-10 mt-4 -translate-x-1/2 md:translate-x-0 w-full md:w-auto justify-center md:justify-start mt-10">
             {/* Avatar */}
             <div
-              className="border-9 border-pink-200 bg-gray-200 overflow-hidden flex items-center justify-center ml-5"
+              className="border-8 border-pink-200 bg-gray-200 overflow-hidden flex items-center justify-center md-5"
               style={{
-                width: "120px",
-                height: "120px",
-                background: "#eee",
-                zIndex: 2,
+                width: "100px",
+                height: "100px",
                 borderRadius: "50%",
+                marginTop:"-20px"
               }}
             >
               <img
@@ -74,24 +75,19 @@ export default function TestimonialSection() {
                 className="w-full h-full object-cover"
               />
             </div>
+
             {/* Star Bar */}
-            <div
-              className="border-8 border-pink-200 bg-white flex items-center ml-[-4px] px-8 py-3"
-              style={{
-                borderRadius: 0,
-                borderLeft: "none",
-                height: "64px",
-                minWidth: "260px",
-                zIndex: 1,
-              }}
-            >
+            <div className="border-8 border-pink-200 bg-white px-6 py-2 mt-3 md:mt-0 md:ml-[-4px] flex items-center justify-center min-w-[180px] md:min-w-[260px] h-12 md:h-16">
               {Array.from({ length: testimonials[current].stars }).map((_, i) => (
-                <span key={i} className="text-pink-500 text-4xl mx-2">&#9733;</span>
+                <span key={i} className="text-pink-500 text-2xl md:text-4xl mx-1 md:mx-2">
+                  &#9733;
+                </span>
               ))}
             </div>
           </div>
+
           {/* Card */}
-          <div className="border-8 border-pink-200 bg-pink-50 w-full pt-24 pb-12 px-8">
+          <div className="border-9 border-pink-200 bg-pink-50 w-full pt-28 sm:pt-24 pb-12 px-6 sm:px-8">
             <div className="flex flex-col justify-center items-center min-h-[180px]">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -102,10 +98,10 @@ export default function TestimonialSection() {
                   transition={{ duration: 0.4 }}
                   className="w-full"
                 >
-                  <p className="text-3xl text-black leading-snug font-medium text-center">
+                  <p className="text-2xl sm:text-3xl text-black leading-snug font-medium text-center">
                     {testimonials[current].text}
                   </p>
-                  <div className="text-right mt-8 text-2xl font-bold w-full">
+                  <div className="text-right mt-8 text-xl sm:text-2xl font-bold w-full">
                     – {testimonials[current].name}
                   </div>
                 </motion.div>
@@ -113,6 +109,7 @@ export default function TestimonialSection() {
             </div>
           </div>
         </div>
+
         {/* Right Arrow */}
         <button
           className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 text-pink-300 text-4xl font-bold select-none"
@@ -121,6 +118,7 @@ export default function TestimonialSection() {
         >
           &#62;
         </button>
+
         {/* Dots */}
         <div className="flex justify-center mt-6 space-x-2">
           {testimonials.map((_, idx) => (
