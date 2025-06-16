@@ -54,15 +54,7 @@ export default function TestimonialSection() {
       </div>
 
       <div className="relative flex flex-col items-center w-full max-w-5xl mx-auto mt-10">
-        {/* Left Arrow */}
-        <button
-          className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 text-pink-300 text-4xl font-bold select-none"
-          onClick={prevTestimonial}
-          aria-label="Previous testimonial"
-        >
-          &#60;
-        </button>
-
+        
         {/* Testimonial Card */}
         <div className="relative w-full">
           {/* Avatar + Star Bar */}
@@ -124,17 +116,7 @@ export default function TestimonialSection() {
             </div>
           </div>
         </div>
-
-        {/* Right Arrow */}
-        <button
-          className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 text-pink-300 text-4xl font-bold select-none"
-          onClick={nextTestimonial}
-          aria-label="Next testimonial"
-        >
-          &#62;
-        </button>
-
-        {/* Dots */}
+          {/* Dots */}
         <div className="flex justify-center mt-6 space-x-2">
           {testimonials.map((_, idx) => (
             <span
