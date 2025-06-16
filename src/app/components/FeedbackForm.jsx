@@ -10,7 +10,7 @@ export default function FeedbackForm() {
     <section className="bg-white text-black py-32 px-8 md:px-32">
       <div className="text-left space-y-8">
         <h2 className="text-5xl md:text-5xl font-bold ">
-          Share Your <span className="text-pink-600">Flavorful</span> Experience
+          Share Your <span  style={{ color: "#FF1F52" }}>Flavorful</span> Experience
         </h2>
         <p className="text-2xl md:text-3xl font-medium font-bold w-7xl">
           Every review adds flavor to what we do. Share your thoughts and help shape the future of food delivery with Oofdi.
