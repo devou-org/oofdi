@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -37,9 +38,8 @@ export default function TestimonialSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-    }, 3000); // auto-switch every 3 seconds
-
-    return () => clearInterval(interval); // cleanup on unmount
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -48,18 +48,22 @@ export default function TestimonialSection() {
         <h2 className="text-4xl md:text-5xl font-bold mb-2">
           Your <span style={{ color: "#FF1F52" }}>Voices</span>, Our Fuel
         </h2>
-        <p className="text-3xl md:text-4xl font-bold max-w-full mx-auto">
+        <p className="text-2xl md:text-3xl font-semibold max-w-full mx-auto">
           Our users share their experiences with Oofdi’s fast, fresh, and reliable<br />delivery.
         </p>
       </div>
 
       <div className="relative flex flex-col items-center w-full max-w-5xl mx-auto mt-10">
-        
-        {/* Testimonial Card */}
+        <button
+          className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 text-pink-300 text-4xl font-bold select-none"
+          onClick={prevTestimonial}
+          aria-label="Previous testimonial"
+        >
+          &#60;
+        </button>
+
         <div className="relative w-full">
-          {/* Avatar + Star Bar */}
           <div className="absolute -top-24 left-1/2 md:left-4 flex flex-col md:flex-row items-center md:items-start z-10 mt-4 -translate-x-1/2 md:translate-x-0 w-full md:w-auto justify-center md:justify-start mt-10">
-            {/* Avatar */}
             <div
               className="border-8 border-pink-200 bg-gray-200 overflow-hidden flex items-center justify-center md-5"
               style={{
@@ -76,16 +80,13 @@ export default function TestimonialSection() {
               />
             </div>
 
-            {/* Star Bar (updated here) */}
             <div className="border-8 border-pink-200 bg-white px-6 py-2 mt-3 md:mt-0 md:ml-[-4px] flex items-center justify-center min-w-[180px] md:min-w-[260px] h-12 md:h-16">
               {Array.from({ length: 5 }).map((_, i) => (
                 <span
                   key={i}
-                  className={`text-2xl md:text-4xl mx-1 md:mx-2 ${
-                    i < testimonials[current].stars
-                      ? "text-pink-500"
-                      : "text-pink-200"
-                  }`}
+                  className={`${
+                    i < testimonials[current].stars ? "text-pink-500" : "text-pink-200"
+                  } text-2xl md:text-4xl mx-1 md:mx-2`}
                 >
                   &#9733;
                 </span>
@@ -93,7 +94,6 @@ export default function TestimonialSection() {
             </div>
           </div>
 
-          {/* Card */}
           <div className="border-9 border-pink-200 bg-pink-50 w-full pt-28 sm:pt-24 pb-12 px-6 sm:px-8">
             <div className="flex flex-col justify-center items-center min-h-[180px]">
               <AnimatePresence mode="wait">
@@ -105,7 +105,7 @@ export default function TestimonialSection() {
                   transition={{ duration: 0.4 }}
                   className="w-full"
                 >
-                  <p className="text-2xl sm:text-3xl text-black leading-snug font-medium text-center">
+                  <p className="text-2xl md:text-2xl text-black leading-snug font-medium text-center">
                     {testimonials[current].text}
                   </p>
                   <div className="text-right mt-8 text-xl sm:text-2xl font-bold w-full">
@@ -116,7 +116,15 @@ export default function TestimonialSection() {
             </div>
           </div>
         </div>
-          {/* Dots */}
+
+        <button
+          className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 text-pink-300 text-4xl font-bold select-none"
+          onClick={nextTestimonial}
+          aria-label="Next testimonial"
+        >
+          &#62;
+        </button>
+
         <div className="flex justify-center mt-6 space-x-2">
           {testimonials.map((_, idx) => (
             <span

@@ -4,13 +4,13 @@ export default function MoreThanFood() {
     <>
       <section className="bg-white text-black px-2 md:px-8 mt-12">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-5xl md:text-5xl font-bold mb-6">
             <span style={{ color: "#FF1F52" }}>More</span> Than Just Food
           </h2>
-          <p className="text-xl md:text-2xl font-bold mt-4">
+          <p className="text-xl md:text-2xl font-semibold mt-4">
             At Oofdi, we care about your health as much as your hunger.
           </p>
-          <p className="text-xl md:text-2xl font-bold">
+          <p className="text-xl md:text-2xl font-semibold">
             In addition to delivering fresh meals, groceries, and protein, we also provide fast and reliable medicine delivery — straight from trusted pharmacies near you.
           </p>
         </div>
