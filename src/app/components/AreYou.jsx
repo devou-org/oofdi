@@ -22,7 +22,7 @@ export default function AreYou() {
               Are You A <span className="text-[#FF1F52]">Vendor</span>?
             </h3>
 
-            <p className="text-2xl md:text-3xl font-medium font-bold mb-10 text-left w-full md:max-w-5xl" style={{ lineHeight: "1.2" }}>
+            <p className="text-2xl md:text-3xl font-medium  mb-10 text-left w-full md:max-w-5xl" style={{ lineHeight: "1.2" }}>
               Manage your menu, receive orders instantly, and grow your business with Oofdi.
             </p>
 

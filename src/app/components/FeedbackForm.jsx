@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Star } from "lucide-react";
 
 export default function FeedbackForm() {
-  const [rating, setRating] = useState(4);
+  const [rating, setRating] = useState(5);
 
   return (
     <section className="bg-white text-black py-32 px-6 sm:px-32">
@@ -12,7 +12,7 @@ export default function FeedbackForm() {
         <h2 className="text-5xl font-bold">
           Share Your <span style={{ color: "#FF1F52" }}>Flavorful</span> Experience
         </h2>
-        <p className="text-2xl md:text-3xl font-medium font-bold max-w-full break-words">
+        <p className="text-2xl md:text-3xl font-medium  max-w-full break-words">
           Every review adds flavor to what we do. Share your thoughts and help shape the future of food delivery with Oofdi.
         </p>
       </div>

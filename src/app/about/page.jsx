@@ -5,7 +5,7 @@ const About = () => {
         <h1 className="text-4xl sm:text-5xl md:text-6xl  font-bold text-center mt-2 z-100">
           About <span className="text-[#FF1F52]">OOFDI</span>
         </h1>
-        <p className="text-base font-bold sm:text-lg md:text-2xl lg:text-3xl text-center p-2 max-w-4xl">
+        <p className="text-xl md:text-2xl font-semibold max-w-4xl text-center p-4">
           At Oofdi, we believe quality living starts with convenience and trust.
           That’s why we deliver more than just meals — we bring you fresh harbor
           fish, premium meat and chicken, groceries, and even medicines right to
