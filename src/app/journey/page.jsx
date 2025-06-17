@@ -117,7 +117,7 @@ const Journey = () => {
                 <img
                   src="./images/oofdiman1.png"
                   alt="Oofdi Man"
-                  className="w-full scale-30 translate-y-10"
+                  className="w-full scale-35 translate-y-10"
                 />
               </div>
             </div>

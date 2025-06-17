@@ -98,15 +98,24 @@ const HeroSection = () => {
             style={{ opacity: newopacity }}
             className=" hidden md:flex w-screen h-1/2  flex-col justify-center md:justify-end items-center absolute top-0 left-0 -z-10 "
           >
-           
-            <div className="h-screen absolute inset-0 bg-gradient-to-b from-[#FF1F52] to-white  z-10"></div>
+            <video
+              src="./video/hero.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-screen object-cover absolute inset-0 z-0"
+            ></video>
 
-            <div className="h-1/2 flex flex-col items-center justify-start z-10">
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-black/50 to-transparent opacity-70 z-10 h-screen"></div>
+
+            <div className="h-1/2 flex flex-col items-center justify-start z-20 ">
               <img
                 className="w-20 md:w-40 h-20 md:h-40"
                 src="./images/loading.gif"
               ></img>
-              <h1 className=" text-3xl text-white  md:text-6xl font-bold text-center mb-6 px-4">
+              <h1 className=" text-3xl text-white md:text-6xl font-bold text-center mb-6 px-4">
                 <span className="text-[#FF1F52]">O</span>nline{" "}
                 <span className="text-[#FF1F52]">O</span>rdering{" "}
                 <span className="text-[#FF1F52]">F</span>ood{" "}
@@ -161,14 +170,14 @@ const HeroSection = () => {
           }}
           aria-hidden="true"
         >
-           <video
-              src="./video/hero.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="object-cover h-full w-full"
-            ></video>
+          <video
+            src="./video/hero.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="object-cover h-full"
+          ></video>
         </motion.div>
       </div>
     </section>
