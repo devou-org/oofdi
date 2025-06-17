@@ -172,10 +172,12 @@ const HeroSection = () => {
         >
           <video
             src="./video/hero.mp4"
+            preload="auto"  
             autoPlay
             loop
             muted
             playsInline
+            poster="./images/fallbackhero.png"
             className="object-cover h-full"
           ></video>
         </motion.div>
