@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
@@ -54,18 +55,21 @@ export default function TestimonialSection() {
       </div>
 
       <div className="relative flex flex-col items-center w-full max-w-5xl mx-auto mt-10">
+        {/* Desktop Left Arrow */}
         <button
-          className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 text-pink-300 text-4xl font-bold select-none"
+          className="hidden md:block absolute left-[-40px] top-1/2 transform -translate-y-1/2 text-pink-300 hover:text-pink-500 transition"
           onClick={prevTestimonial}
           aria-label="Previous testimonial"
         >
-          &#60;
+          <ChevronLeft size={40} />
         </button>
 
+        {/* Testimonial Card */}
         <div className="relative w-full">
+          {/* Avatar + Stars */}
           <div className="absolute -top-24 left-1/2 md:left-4 flex flex-col md:flex-row items-center md:items-start z-10 mt-4 -translate-x-1/2 md:translate-x-0 w-full md:w-auto justify-center md:justify-start mt-10">
             <div
-              className="border-8 border-pink-200 bg-gray-200 overflow-hidden flex items-center justify-center md-5"
+              className="border-8 border-pink-200 bg-gray-200 overflow-hidden flex items-center justify-center"
               style={{
                 width: "100px",
                 height: "100px",
@@ -86,7 +90,7 @@ export default function TestimonialSection() {
                   key={i}
                   className={`${
                     i < testimonials[current].stars ? "text-pink-500" : "text-pink-200"
-                  } text-2xl md:text-4xl mx-1 md:mx-2`}
+                  } text-3xl md:text-4xl mx-1 md:mx-2 leading-none`}
                 >
                   &#9733;
                 </span>
@@ -94,6 +98,7 @@ export default function TestimonialSection() {
             </div>
           </div>
 
+          {/* Testimonial Box */}
           <div className="border-9 border-pink-200 bg-pink-50 w-full pt-28 sm:pt-24 pb-12 px-6 sm:px-8">
             <div className="flex flex-col justify-center items-center min-h-[180px]">
               <AnimatePresence mode="wait">
@@ -117,14 +122,16 @@ export default function TestimonialSection() {
           </div>
         </div>
 
+        {/* Desktop Right Arrow */}
         <button
-          className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 text-pink-300 text-4xl font-bold select-none"
+          className="hidden md:block absolute right-[-40px] top-1/2 transform -translate-y-1/2 text-pink-300 hover:text-pink-500 transition"
           onClick={nextTestimonial}
           aria-label="Next testimonial"
         >
-          &#62;
+          <ChevronRight size={40} />
         </button>
 
+        {/* Dots */}
         <div className="flex justify-center mt-6 space-x-2">
           {testimonials.map((_, idx) => (
             <span
