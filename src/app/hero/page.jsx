@@ -108,14 +108,14 @@ const HeroSection = () => {
             ></video>
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-black/50 to-transparent opacity-70 z-10 h-screen"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-transparent opacity-70 z-10 h-screen"></div>
 
             <div className="h-1/2 flex flex-col items-center justify-start z-20 ">
               <img
                 className="w-20 md:w-40 h-20 md:h-40"
                 src="./images/loading.gif"
               ></img>
-              <h1 className=" text-3xl text-white md:text-6xl font-bold text-center mb-6 px-4">
+              <h1 className=" text-3xl text-white md:text-6xl font-bold text-center mb-6 p-4">
                 <span className="text-[#FF1F52]">O</span>nline{" "}
                 <span className="text-[#FF1F52]">O</span>rdering{" "}
                 <span className="text-[#FF1F52]">F</span>ood{" "}
@@ -139,17 +139,17 @@ const HeroSection = () => {
                     />
                   </a>
                 </div>
-                <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
+                <div className="inline-block transform b transition-transform duration-300 hover:scale-115 hover:-translate-y-1">
                   <a
                     href="https://www.apple.com/app-store/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <img
-                      src="/images/Appstore.png"
+                      src="/images/appstorebgwhite.png"
                       alt="Download on the App Store"
-                      width={200}
-                      height={60}
+                      width={250}
+                      height={80}
                       className="w-auto h-20 mb-20"
                     />
                   </a>
