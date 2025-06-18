@@ -1,9 +1,10 @@
 import Image from "next/image";
+
 export default function MoreThanFood() {
   return (
     <>
-      <section className="bg-white text-black px-2 md:px-8 mt-12">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="bg-white text-black mt-12">
+        <div className="max-w-3xl mx-auto text-center px-6 md:px-0">
           <h2 className="text-5xl md:text-5xl font-bold mb-6">
             <span style={{ color: "#FF1F52" }}>More</span> Than Just Food
           </h2>

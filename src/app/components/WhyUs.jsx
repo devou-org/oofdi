@@ -73,7 +73,7 @@ export default function WhyUs() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-pink-50 p-4 rounded-xl shadow-sm flex items-center gap-3"
+                className="bg-pink-50 p-4 rounded-xl flex items-center gap-3"
               >
                 <span>{feature.icon}</span>
                 <p className="font-bold text-xl md:text-2xl">{feature.text}</p>
