@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -27,20 +27,28 @@ const testimonials = [
 
 export default function TestimonialSection() {
   const [current, setCurrent] = useState(0);
+  const intervalRef = useRef(null);
+
+  const resetTimer = () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    }, 3000);
+  };
 
   const prevTestimonial = () => {
     setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    resetTimer();
   };
 
   const nextTestimonial = () => {
     setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    resetTimer();
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-    }, 3000);
-    return () => clearInterval(interval);
+    resetTimer();
+    return () => clearInterval(intervalRef.current);
   }, []);
 
   return (
@@ -139,7 +147,10 @@ export default function TestimonialSection() {
               className={`w-4 h-4 bg-pink-200 rounded-full inline-block transition-opacity duration-200 ${
                 idx === current ? "" : "opacity-50"
               }`}
-              onClick={() => setCurrent(idx)}
+              onClick={() => {
+                setCurrent(idx);
+                resetTimer();
+              }}
               style={{ cursor: "pointer" }}
             ></span>
           ))}
