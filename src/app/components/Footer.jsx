@@ -16,11 +16,7 @@ export default function Footer() {
             Quick Links
           </h3>
           <ul className="space-y-2">
-            <li>
-              <a href="/about" className="hover:underline flex items-center gap-2">
-                About
-              </a>
-            </li>
+        
             <li>
               <a
                 href="/download-customer"
