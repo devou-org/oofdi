@@ -12,7 +12,8 @@ export default function MoreThanFood() {
             At Oofdi, we care about your health as much as your hunger.
           </p>
           <p className="text-xl md:text-2xl font-semibold">
-            In addition to delivering fresh meals, groceries, and protein, we also provide fast and reliable medicine delivery — straight from trusted pharmacies near you.
+            In addition to delivering fresh meals, groceries, and protein, we also provide fast and
+            reliable medicine delivery — straight from trusted pharmacies near you.
           </p>
         </div>
       </section>

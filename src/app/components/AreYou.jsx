@@ -1,14 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import {
-  ClipboardList,
-  Truck,
-  LineChart,
-  Archive,
-  MapPin,
-  Bell,
-  Wallet,
-} from "lucide-react";
+import { ClipboardList, Truck, LineChart, Archive, MapPin, Bell, Wallet } from "lucide-react";
 
 export default function AreYou() {
   return (
@@ -22,7 +14,10 @@ export default function AreYou() {
               Are You A <span className="text-[#FF1F52]">Vendor</span>?
             </h3>
 
-            <p className="text-2xl md:text-3xl font-medium  mb-10 text-left w-full md:max-w-5xl" style={{ lineHeight: "1.2" }}>
+            <p
+              className="text-2xl md:text-3xl font-medium  mb-10 text-left w-full md:max-w-5xl"
+              style={{ lineHeight: "1.2" }}
+            >
               Manage your menu, receive orders instantly, and grow your business with Oofdi.
             </p>
 
@@ -58,11 +53,7 @@ export default function AreYou() {
 
             <div className="flex gap-4 mt-2">
               <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
-                <a
-                  href="https://play.google.com/store"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
                   <img
                     src="/images/GooglePlay.png"
                     alt="Get it on Google Play"
@@ -150,11 +141,7 @@ export default function AreYou() {
 
               <div className="flex gap-4 mt-2">
                 <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
-                  <a
-                    href="https://play.google.com/store"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
                     <img
                       src="/images/GooglePlay.png"
                       alt="Get it on Google Play"

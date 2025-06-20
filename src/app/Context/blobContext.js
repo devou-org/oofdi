@@ -1,18 +1,20 @@
 "use client";
 
-import { createContext, useContext, useState,useEffect } from "react";
-import { doc, getDoc} from "firebase/firestore";
+import { createContext, useContext, useState, useEffect } from "react";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
 const MediaContext = createContext();
 
 export const MediaProvider = ({ children }) => {
   const [imageUrl, setImageUrl] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
+  const [status, setStatus] = useState("");
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     const fetchMedia = async () => {
       try {
-        const ref = doc(db, "media", "adminUploads"); // Adjust if your collection/doc structure differs
+        const ref = doc(db, "media", "adminUploads");
         const docSnap = await getDoc(ref);
 
         if (docSnap.exists()) {

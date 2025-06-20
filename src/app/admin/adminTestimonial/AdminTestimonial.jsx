@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../../firebaseConfig";
 import { useTestimonialsFirestore } from "@/app/Context/firebaseContext";
+import { saveTestimonial } from "@/app/utils/firebaseMedia";
 
 const AdminTestimonial = () => {
   const [form, setForm] = useState({
@@ -15,7 +16,7 @@ const AdminTestimonial = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
-  const {fetchData, testimonialData, updateTestimonial, deleteTestimonial } =
+  const { fetchData, testimonialData, updateTestimonial, deleteTestimonial } =
     useTestimonialsFirestore();
 
   const handleChange = (e) => {
@@ -73,6 +74,22 @@ const AdminTestimonial = () => {
   const renderStars = (rating) => {
     return "★".repeat(rating) + "☆".repeat(5 - rating);
   };
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const res = await fetch(`/api/testimonial-avatars?folder=avatars&filename=${file.name}`, {
+      method: "POST",
+      body: file,
+    });
+
+    if (res.ok) {
+      const { url } = await res.json();
+      setForm((prev) => ({ ...prev, avatar: url })); // set avatar URL in form
+    } else {
+      console.error("Failed to upload avatar.");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -90,7 +107,6 @@ const AdminTestimonial = () => {
 
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
           {/* Form Section */}
           <div className="bg-white border-2 border-[#FF1F52] rounded-xl shadow-lg">
             <div className="bg-[#FF1F52] text-white py-4 px-6 rounded-t-xl">
@@ -98,7 +114,7 @@ const AdminTestimonial = () => {
                 {isEditMode ? "Edit Testimonial" : "Add New Testimonial"}
               </h2>
             </div>
-            
+
             <form onSubmit={handleSubmit} className="p-6 space-y-6">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -117,17 +133,24 @@ const AdminTestimonial = () => {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Avatar URL
+                  Avatar Upload
                 </label>
-                <input
-                  type="url"
-                  name="avatar"
-                  value={form.avatar}
-                  onChange={handleChange}
-                  required
-                  placeholder="https://example.com/avatar.jpg"
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#FF1F52] transition-colors"
-                />
+                <div className="flex items-center gap-3 mb-4">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    required={!isEditMode}
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg"
+                  />
+                  {form.avatar && (
+                    <img
+                      src={form.avatar}
+                      alt="avatar preview"
+                      className="w-12 h-12 rounded-full border-2 border-[#FF1F52]"
+                    />
+                  )}
+                </div>
               </div>
 
               <div>
@@ -172,7 +195,7 @@ const AdminTestimonial = () => {
                 >
                   {isEditMode ? "Update Testimonial" : "Add Testimonial"}
                 </button>
-                
+
                 {isEditMode && (
                   <button
                     type="button"
@@ -202,17 +225,19 @@ const AdminTestimonial = () => {
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-[#FF1F52]">
-                      {testimonialData.length > 0 
-                        ? (testimonialData.reduce((sum, t) => sum + t.stars, 0) / testimonialData.length).toFixed(1)
-                        : '0.0'
-                      }
+                      {testimonialData.length > 0
+                        ? (
+                            testimonialData.reduce((sum, t) => sum + t.stars, 0) /
+                            testimonialData.length
+                          ).toFixed(1)
+                        : "0.0"}
                     </div>
                     <div className="text-sm text-gray-600">Average Rating</div>
                   </div>
                 </div>
               </div>
             </div>
-{/* 
+            {/* 
             <div className="bg-white border-2 border-[#FF1F52] rounded-xl shadow-lg">
               <div className="bg-[#FF1F52] text-white py-4 px-6 rounded-t-xl">
                 <h3 className="text-xl font-bold">Quick Actions</h3>
@@ -236,7 +261,7 @@ const AdminTestimonial = () => {
             <div className="bg-[#FF1F52] text-white py-4 px-6 rounded-t-xl">
               <h2 className="text-2xl font-bold">All Testimonials ({testimonialData.length})</h2>
             </div>
-            
+
             <div className="p-6">
               {testimonialData.length === 0 ? (
                 <div className="text-center py-12">
@@ -268,9 +293,9 @@ const AdminTestimonial = () => {
                             </div>
                           </div>
                         </div>
-                        
+
                         <p className="text-gray-600 mb-4 line-clamp-3">"{testimonial.text}"</p>
-                        
+
                         <div className="flex gap-2">
                           <button
                             onClick={() => handleEdit(testimonial)}
@@ -280,7 +305,9 @@ const AdminTestimonial = () => {
                           </button>
                           <button
                             onClick={() => {
-                              if (window.confirm('Are you sure you want to delete this testimonial?')) {
+                              if (
+                                window.confirm("Are you sure you want to delete this testimonial?")
+                              ) {
                                 deleteTestimonial(testimonial.id);
                               }
                             }}

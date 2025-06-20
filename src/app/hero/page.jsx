@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useMedia } from "../Context/blobContext";
+import Image from "next/image";
 const HeroSection = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -11,6 +12,7 @@ const HeroSection = () => {
   });
 
   const [isMobile, setIsMobile] = useState(false);
+
   const { imageUrl, setImageUrl, videoUrl, setVideoUrl } = useMedia();
 
   useEffect(() => {
@@ -28,31 +30,11 @@ const HeroSection = () => {
     [0.4, 0.5],
     isMobile ? ["100%", "100%"] : ["50%", "100%"]
   );
-  const leftScale = useTransform(
-    scrollYProgress,
-    [0.4, 0.5],
-    isMobile ? [1, 1] : [1, 1.05]
-  );
-  const rightOpacity = useTransform(
-    scrollYProgress,
-    [0.4, 0.5],
-    isMobile ? [1, 1] : [1, 0]
-  );
-  const rightScale = useTransform(
-    scrollYProgress,
-    [0.4, 0.5],
-    isMobile ? [1, 1] : [1, 0.95]
-  );
-  const opacity = useTransform(
-    scrollYProgress,
-    [0.4, 0.6],
-    isMobile ? [1, 1] : [1, 0]
-  );
-  const newopacity = useTransform(
-    scrollYProgress,
-    [0.65, 0.75],
-    isMobile ? [1, 1] : [0, 1.5]
-  );
+  const leftScale = useTransform(scrollYProgress, [0.4, 0.5], isMobile ? [1, 1] : [1, 1.05]);
+  const rightOpacity = useTransform(scrollYProgress, [0.4, 0.5], isMobile ? [1, 1] : [1, 0]);
+  const rightScale = useTransform(scrollYProgress, [0.4, 0.5], isMobile ? [1, 1] : [1, 0.95]);
+  const opacity = useTransform(scrollYProgress, [0.4, 0.6], isMobile ? [1, 1] : [1, 0]);
+  const newopacity = useTransform(scrollYProgress, [0.65, 0.75], isMobile ? [1, 1] : [0, 1.5]);
 
   return (
     <section
@@ -100,8 +82,8 @@ const HeroSection = () => {
             className=" hidden md:flex w-screen h-1/2  flex-col justify-center md:justify-end items-center absolute top-0 left-0 -z-10 "
           >
             <video
-              preload="auto" 
-              src={videoUrl? videoUrl : "/video/hero.mp4"} 
+              preload="auto"
+              src={videoUrl ? videoUrl : "/video/hero.mp4"}
               autoPlay
               loop
               muted
@@ -114,10 +96,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-transparent opacity-70 z-10 h-screen"></div>
 
             <div className="h-1/2 flex flex-col items-center justify-start z-20 ">
-              <img
-                className="w-20 md:w-40 h-20 md:h-40"
-                src="./images/loading.gif"
-              ></img>
+              <img className="w-20 md:w-40 h-20 md:h-40" src="./images/loading.gif"></img>
               <h1 className=" text-3xl text-white md:text-6xl font-bold text-center mb-6 p-4">
                 <span className="text-[#FF1F52]">O</span>nline{" "}
                 <span className="text-[#FF1F52]">O</span>rdering{" "}
@@ -128,11 +107,7 @@ const HeroSection = () => {
 
               <div className="flex gap-4 mt-2">
                 <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
-                  <a
-                    href="https://play.google.com/store"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
                     <img
                       src="/images/GooglePlay.png"
                       alt="Get it on Google Play"
@@ -173,12 +148,17 @@ const HeroSection = () => {
           }}
           aria-hidden="true"
         >
-          <img
-            src={imageUrl? imageUrl : "/images/veg.jpg"}
-            preload="auto"  
-        
-            className="object-cover w-full h-full"
-          ></img>
+          <Image
+            src={imageUrl ? imageUrl : "/images/veg.jpg"}
+            alt="Product Image"
+            width={420}
+            height={500}
+            className={`w-full h-full object-cover transition-opacity duration-300
+            
+            }`}
+            loading="eager"
+            priority
+          />
         </motion.div>
       </div>
     </section>

@@ -28,10 +28,10 @@ export default function FeedbackForm() {
 
     emailjs
       .send(
-        "service_6n8nyqs",         // ✅ Your actual EmailJS service ID
-        "template_ioo5nk5",         // ✅ Your actual EmailJS template ID
+        "service_6n8nyqs", // ✅ Your actual EmailJS service ID
+        "template_ioo5nk5", // ✅ Your actual EmailJS template ID
         templateParams,
-        "1Wi5ZQVNE43CMxKym"          // ✅ Your actual EmailJS public key
+        "1Wi5ZQVNE43CMxKym" // ✅ Your actual EmailJS public key
       )
       .then(
         (response) => {
@@ -55,7 +55,8 @@ export default function FeedbackForm() {
           Share Your <span style={{ color: "#FF1F52" }}>Flavorful</span> Experience
         </h2>
         <p className="text-2xl md:text-3xl font-medium max-w-full break-words">
-          Every review adds flavor to what we do. Share your thoughts and help shape the future of food delivery with Oofdi.
+          Every review adds flavor to what we do. Share your thoughts and help shape the future of
+          food delivery with Oofdi.
         </p>
       </div>
 

@@ -1,11 +1,4 @@
-import {
-  Pizza,
-  Fish,
-  BriefcaseMedical,
-  CreditCard,
-  Clock,
-  Star,
-} from "lucide-react";
+import { Pizza, Fish, BriefcaseMedical, CreditCard, Clock, Star } from "lucide-react";
 
 const features = [
   {
@@ -41,25 +34,13 @@ export default function WhyUs() {
         {/* Left: stacked images */}
         <div className="flex flex-col h-auto">
           <div className="flex-1">
-            <img
-              src="/images/veg.jpg"
-              alt="Groceries"
-              className="w-full h-full object-cover"
-            />
+            <img src="/images/veg.jpg" alt="Groceries" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1">
-            <img
-              src="/images/Meat.jpg"
-              alt="Meat"
-              className="w-full h-full object-cover"
-            />
+            <img src="/images/Meat.jpg" alt="Meat" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1">
-            <img
-              src="/images/Pharmacy.jpg"
-              alt="Pharmacy"
-              className="w-full h-full object-cover"
-            />
+            <img src="/images/Pharmacy.jpg" alt="Pharmacy" className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -71,10 +52,7 @@ export default function WhyUs() {
 
           <div className="space-y-4 mb-6">
             {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-pink-50 p-4 rounded-xl flex items-center gap-3"
-              >
+              <div key={index} className="bg-pink-50 p-4 rounded-xl flex items-center gap-3">
                 <span>{feature.icon}</span>
                 <p className="font-bold text-xl md:text-2xl">{feature.text}</p>
               </div>
@@ -83,11 +61,7 @@ export default function WhyUs() {
 
           <div className="flex gap-4 mt-2 flex-nowrap justify-center items-center">
             <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
-              <a
-                href="https://play.google.com/store"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
                 <img
                   src="/images/GooglePlay.png"
                   alt="Get it on Google Play"
@@ -99,11 +73,7 @@ export default function WhyUs() {
             </div>
 
             <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
-              <a
-                href="https://www.apple.com/app-store/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">
                 <img
                   src="/images/Appstore.png"
                   alt="Download on the App Store"

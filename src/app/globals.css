@@ -22,7 +22,6 @@
 }
 */
 
-
 .marquee-container {
   width: 100%;
   overflow: hidden;
@@ -41,7 +40,7 @@
   height: 40px;
   margin: 0 8px;
 }
-  
+
 @keyframes scroll-left {
   0% {
     transform: translateX(0%);

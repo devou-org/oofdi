@@ -99,10 +99,7 @@ const Journey = () => {
         </header>
 
         <main className="w-full h-1/2 flex flex-col gap-6 overflow-hidden">
-          <div
-            className="w-full h-1/4 flex justify-center relative"
-            id="shop-person-section"
-          >
+          <div className="w-full h-1/4 flex justify-center relative" id="shop-person-section">
             <div className=" w-fit md:w-1/2  md:h-full relative">
               <img
                 ref={imageRef}
@@ -125,10 +122,7 @@ const Journey = () => {
 
           <div className="h-1/4 overflow-y-hidden"></div>
 
-          <div
-            className="w-full h-1/4 flex justify-between"
-            id="smart-phone-section"
-          >
+          <div className="w-full h-1/4 flex justify-between" id="smart-phone-section">
             <div className="w-1/4 hidden sm:block">
               <img src="./images/foodleft.png" alt="" />
             </div>

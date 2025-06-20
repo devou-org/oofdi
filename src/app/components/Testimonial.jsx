@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useTestimonialsFirestore  } from "../Context/firebaseContext";
+import { useTestimonialsFirestore } from "../Context/firebaseContext";
 
 // const testimonials = [
 //   {
@@ -26,13 +26,11 @@ import { useTestimonialsFirestore  } from "../Context/firebaseContext";
 //   },
 // ];
 
-
-
 export default function TestimonialSection() {
   const [current, setCurrent] = useState(0);
   const intervalRef = useRef(null);
-  const {testimonialData, loading} = useTestimonialsFirestore();
-    
+  const { testimonialData, loading } = useTestimonialsFirestore();
+
   if (loading) return <p>Loading...</p>;
 
   const resetTimer = () => {
@@ -43,7 +41,7 @@ export default function TestimonialSection() {
   };
 
   const prevTestimonial = () => {
-    setCurrent((prev) => (prev === 0 ?testimonialData.length - 1 : prev - 1));
+    setCurrent((prev) => (prev === 0 ? testimonialData.length - 1 : prev - 1));
     resetTimer();
   };
 
@@ -64,7 +62,9 @@ export default function TestimonialSection() {
           Your <span style={{ color: "#FF1F52" }}>Voices</span>, Our Fuel
         </h2>
         <p className="text-2xl md:text-3xl font-semibold max-w-full mx-auto">
-          Our users share their experiences with Oofdi’s fast, fresh, and reliable<br />delivery.
+          Our users share their experiences with Oofdi’s fast, fresh, and reliable
+          <br />
+          delivery.
         </p>
       </div>
 

@@ -1,4 +1,4 @@
-import { db } from "../../../firebaseConfig";// your initialized Firestore `db`
+import { db } from "../../../firebaseConfig"; // your initialized Firestore `db`
 import { doc, setDoc, deleteDoc } from "firebase/firestore";
 
 // Save or update URLs
@@ -11,4 +11,9 @@ export const saveMediaUrls = async ({ imageUrl, videoUrl }) => {
 export const deleteMediaUrl = async (type) => {
   const ref = doc(db, "media", "adminUploads");
   await deleteDoc(doc(db, "media", "adminUploads"), [type]);
+};
+
+export const saveTestimonial = async ({ imageUrl }) => {
+  const ref = doc(db, "media", "testimonialUploads");
+  await setDoc(ref, { imageUrl });
 };
