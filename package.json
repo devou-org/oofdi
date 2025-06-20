@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@vercel/blob": "^1.1.1",
+    "firebase": "^11.9.1",
     "framer-motion": "^12.18.1",
     "git": "^0.1.5",
     "lucide-react": "^0.515.0",

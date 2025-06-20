@@ -3,46 +3,52 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTestimonialsFirestore  } from "../Context/firebaseContext";
 
-const testimonials = [
-  {
-    name: "Alex",
-    avatar: "/images/Alex.png",
-    text: "Oofdi has completely changed how I order food. It’s fast, reliable, and the meals always arrive hot and fresh. Even late-night cravings are covered!",
-    stars: 5,
-  },
-  {
-    name: "Priya",
-    avatar: "/images/Priya.png",
-    text: "The grocery and medicine delivery is a lifesaver. Oofdi is my go-to app for everything!",
-    stars: 5,
-  },
-  {
-    name: "Sam",
-    avatar: "/images/Sam.png",
-    text: "Super easy to use and always on time. Highly recommend Oofdi to everyone!",
-    stars: 4,
-  },
-];
+// const testimonials = [
+//   {
+//     name: "Alex",
+//     avatar: "/images/Alex.png",
+//     text: "Oofdi has completely changed how I order food. It’s fast, reliable, and the meals always arrive hot and fresh. Even late-night cravings are covered!",
+//     stars: 5,
+//   },
+//   {
+//     name: "Priya",
+//     avatar: "/images/Priya.png",
+//     text: "The grocery and medicine delivery is a lifesaver. Oofdi is my go-to app for everything!",
+//     stars: 5,
+//   },
+//   {
+//     name: "Sam",
+//     avatar: "/images/Sam.png",
+//     text: "Super easy to use and always on time. Highly recommend Oofdi to everyone!",
+//     stars: 4,
+//   },
+// ];
+
+
 
 export default function TestimonialSection() {
   const [current, setCurrent] = useState(0);
   const intervalRef = useRef(null);
+  const {testimonialData, loading} = useTestimonialsFirestore();
+    
+  if (loading) return <p>Loading...</p>;
 
   const resetTimer = () => {
     clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+      setCurrent((prev) => (prev === testimonialData.length - 1 ? 0 : prev + 1));
     }, 3000);
   };
 
   const prevTestimonial = () => {
-    setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    setCurrent((prev) => (prev === 0 ?testimonialData.length - 1 : prev - 1));
     resetTimer();
   };
 
   const nextTestimonial = () => {
-    setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    setCurrent((prev) => (prev === testimonialData.length - 1 ? 0 : prev + 1));
     resetTimer();
   };
 
@@ -86,8 +92,8 @@ export default function TestimonialSection() {
               }}
             >
               <img
-                src={testimonials[current].avatar}
-                alt={testimonials[current].name}
+                src={testimonialData[current].avatar}
+                alt={testimonialData[current].name}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -97,7 +103,7 @@ export default function TestimonialSection() {
                 <span
                   key={i}
                   className={`${
-                    i < testimonials[current].stars ? "text-pink-500" : "text-pink-200"
+                    i < testimonialData[current].stars ? "text-pink-500" : "text-pink-200"
                   } text-3xl md:text-4xl mx-1 md:mx-2 leading-none`}
                 >
                   &#9733;
@@ -119,10 +125,10 @@ export default function TestimonialSection() {
                   className="w-full"
                 >
                   <p className="text-2xl md:text-2xl text-black leading-snug font-medium text-center">
-                    {testimonials[current].text}
+                    {testimonialData[current].text}
                   </p>
                   <div className="text-right mt-8 text-xl sm:text-2xl font-bold w-full">
-                    – {testimonials[current].name}
+                    – {testimonialData[current].name}
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -141,7 +147,7 @@ export default function TestimonialSection() {
 
         {/* Dots */}
         <div className="flex justify-center mt-6 space-x-2">
-          {testimonials.map((_, idx) => (
+          {testimonialData.map((_, idx) => (
             <span
               key={idx}
               className={`w-4 h-4 bg-pink-200 rounded-full inline-block transition-opacity duration-200 ${

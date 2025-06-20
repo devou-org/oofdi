@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono, Mona_Sans } from "next/font/google";
 import "./globals.css";
+import { FirestoreProvider } from "./Context/firebaseContext";
+import { MediaProvider } from "./Context/blobContext";
 
 
 const monoSans = Mona_Sans({
@@ -13,7 +15,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${monoSans.variable} overflow-x-hidden`}
       >
-        {children}
+      <FirestoreProvider>
+       <MediaProvider>
+          <>  {children} </>       
+       </MediaProvider>      
+      </FirestoreProvider>
+        
       </body>
     </html>
   );

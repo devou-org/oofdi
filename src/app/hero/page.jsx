@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useTransform, motion, useScroll } from "framer-motion";
-
+import { useMedia } from "../Context/blobContext";
 const HeroSection = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -11,6 +11,7 @@ const HeroSection = () => {
   });
 
   const [isMobile, setIsMobile] = useState(false);
+  const { imageUrl, setImageUrl, videoUrl, setVideoUrl } = useMedia();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -99,11 +100,13 @@ const HeroSection = () => {
             className=" hidden md:flex w-screen h-1/2  flex-col justify-center md:justify-end items-center absolute top-0 left-0 -z-10 "
           >
             <video
-              src="./video/hero.mp4"
+              preload="auto" 
+              src={videoUrl? videoUrl : "/video/hero.mp4"} 
               autoPlay
               loop
               muted
               playsInline
+              poster="./images/fallbackhero.png"
               className="w-full h-screen object-cover absolute inset-0 z-0"
             ></video>
 
@@ -170,16 +173,12 @@ const HeroSection = () => {
           }}
           aria-hidden="true"
         >
-          <video
-            src="./video/hero.mp4"
+          <img
+            src={imageUrl? imageUrl : "/images/veg.jpg"}
             preload="auto"  
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="./images/fallbackhero.png"
-            className="object-cover h-full"
-          ></video>
+        
+            className="object-cover w-full h-full"
+          ></img>
         </motion.div>
       </div>
     </section>
