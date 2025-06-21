@@ -2,7 +2,8 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useTransform, motion, useScroll } from "framer-motion";
-
+import { useMedia } from "../Context/blobContext";
+import Image from "next/image";
 const HeroSection = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -11,6 +12,8 @@ const HeroSection = () => {
   });
 
   const [isMobile, setIsMobile] = useState(false);
+
+  const { imageUrl, setImageUrl, videoUrl, setVideoUrl } = useMedia();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -27,31 +30,17 @@ const HeroSection = () => {
     [0.4, 0.5],
     isMobile ? ["100%", "100%"] : ["50%", "100%"]
   );
-  const leftScale = useTransform(
-    scrollYProgress,
-    [0.4, 0.5],
-    isMobile ? [1, 1] : [1, 1.05]
-  );
-  const rightOpacity = useTransform(
-    scrollYProgress,
-    [0.4, 0.5],
-    isMobile ? [1, 1] : [1, 0]
-  );
-  const rightScale = useTransform(
-    scrollYProgress,
-    [0.4, 0.5],
-    isMobile ? [1, 1] : [1, 0.95]
-  );
-  const opacity = useTransform(scrollYProgress, [0.4, 0.6], [1, 0]);
-  const newopacity = useTransform(scrollYProgress, [0.65, .75], [0, 1.5]);
-  const scale = useTransform(scrollYProgress, [0.6, .7], [0, 1]);
-
+  const leftScale = useTransform(scrollYProgress, [0.4, 0.5], isMobile ? [1, 1] : [1, 1.05]);
+  const rightOpacity = useTransform(scrollYProgress, [0.4, 0.5], isMobile ? [1, 1] : [1, 0]);
+  const rightScale = useTransform(scrollYProgress, [0.4, 0.5], isMobile ? [1, 1] : [1, 0.95]);
+  const opacity = useTransform(scrollYProgress, [0.4, 0.6], isMobile ? [1, 1] : [1, 0]);
+  const newopacity = useTransform(scrollYProgress, [0.65, 0.75], isMobile ? [1, 1] : [0, 1.5]);
 
   return (
     <section
       id="hero-section"
       ref={sectionRef}
-      className="relative w-screen h-[200vh] md:h-[300vh]  "
+      className="relative w-screen h-[100vh] md:h-[300vh]  "
       aria-label="Oofdi Food Delivery Hero Section"
     >
       <div className="sticky top-0 w-screen h-screen flex flex-col md:flex-row">
@@ -87,13 +76,28 @@ const HeroSection = () => {
               </a>
             </div>
           </motion.div>
+
           <motion.div
-            style={{ opacity: newopacity,scale }}
-            className="w-screen h-1/2 flex flex-col justify-center md:justify-end items-center absolute top-0 left-0 -z-10"
+            style={{ opacity: newopacity }}
+            className=" hidden md:flex w-screen h-1/2  flex-col justify-center md:justify-end items-center absolute top-0 left-0 -z-10 "
           >
-            <div className="h-1/2 flex flex-col items-center justify-start">
-              <img className="w-20 md:w-40 h-20 md:h-40" src="./images/oofdilogo.jpg"></img>
-              <h1 className=" text-3xl  md:text-6xl font-bold text-center mb-6 px-4">
+            <video
+              preload="auto"
+              src={videoUrl ? videoUrl : "/video/hero.mp4"}
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster="./images/fallbackhero.png"
+              className="w-full h-screen object-cover absolute inset-0 z-0"
+            ></video>
+
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-transparent opacity-70 z-10 h-screen"></div>
+
+            <div className="h-1/2 flex flex-col items-center justify-start z-20 ">
+              <img className="w-20 md:w-40 h-20 md:h-40" src="./images/loading.gif"></img>
+              <h1 className=" text-3xl text-white md:text-6xl font-bold text-center mb-6 p-4">
                 <span className="text-[#FF1F52]">O</span>nline{" "}
                 <span className="text-[#FF1F52]">O</span>rdering{" "}
                 <span className="text-[#FF1F52]">F</span>ood{" "}
@@ -101,26 +105,33 @@ const HeroSection = () => {
                 <span className="text-[#FF1F52]">I</span>nstantly
               </h1>
 
-              <div className="flex gap-6 mt-4">
-                {/* App Store Button */}
-                <a
-                  href="https://apps.apple.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-5 py-3 border border-black rounded-lg hover:bg-black hover:text-white transition"
-                >
-                  <span className="font-semibold">App Store</span>
-                </a>
-
-                {/* Play Store Button */}
-                <a
-                  href="https://play.google.com/store"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-5 py-3 border border-black rounded-lg hover:bg-black hover:text-white transition"
-                >
-                  <span className="font-semibold">Play Store</span>
-                </a>
+              <div className="flex gap-4 mt-2">
+                <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
+                  <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
+                    <img
+                      src="/images/GooglePlay.png"
+                      alt="Get it on Google Play"
+                      width={140}
+                      height={42}
+                      className="w-auto h-12 mt-4"
+                    />
+                  </a>
+                </div>
+                <div className="inline-block transform b transition-transform duration-300 hover:scale-115 hover:-translate-y-1">
+                  <a
+                    href="https://www.apple.com/app-store/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="/images/appstorebgwhite.png"
+                      alt="Download on the App Store"
+                      width={250}
+                      height={80}
+                      className="w-auto h-20 mb-20"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -128,7 +139,7 @@ const HeroSection = () => {
 
         {/* Right Image (hidden on small screens) */}
         <motion.div
-          className={`h-screen ${isMobile ? "block" : "hidden md:block"}`}
+          className={`h-screen  ${isMobile ? "block" : "hidden md:block"}`}
           style={{
             width: isMobile ? "100%" : "50%",
             opacity: isMobile ? 1 : rightOpacity,
@@ -137,10 +148,16 @@ const HeroSection = () => {
           }}
           aria-hidden="true"
         >
-          <img
-            className="w-full h-3/4 md:h-full object-cover"
-            src="/images/veg.jpg"
-            alt="Vegetarian food platter from Oofdi"
+          <Image
+            src={imageUrl ? imageUrl : "/images/veg.jpg"}
+            alt="Product Image"
+            width={420}
+            height={500}
+            className={`w-full h-full object-cover transition-opacity duration-300
+            
+            }`}
+            loading="eager"
+            priority
           />
         </motion.div>
       </div>

@@ -1,22 +1,31 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Check, Truck, PackageSearch, Smartphone } from "lucide-react";
 
 const Journey = () => {
   const [step, setStep] = useState("order");
   const [isMobile, setIsMobile] = useState(false);
   const [position, setPosition] = useState(0);
+  const imageRef = useRef(null);
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    const checkMobile = () => {
-      const mobile = window.innerWidth <= 758;
-      setIsMobile(mobile);
-      setPosition(mobile ? 5 : 80);
+    if (imageRef.current) {
+      const rect = imageRef.current.getBoundingClientRect();
+      setWidth(rect.width);
+      console.log("Image width:", rect.width);
+    }
+
+    // Optional: update on window resize
+    const handleResize = () => {
+      if (imageRef.current) {
+        const rect = imageRef.current.getBoundingClientRect();
+        setWidth(rect.width);
+      }
     };
 
-    checkMobile(); // Run once on mount
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const startJourney = () => {
@@ -30,12 +39,8 @@ const Journey = () => {
       if (currentIndex < steps.length) {
         setStep(steps[currentIndex]);
 
-        if (steps[currentIndex] === "delivered") {
-          if (isMobile) {
-            setPosition(150);
-          } else {
-            setPosition(1100);
-          }
+        if (steps[currentIndex] === "tracking") {
+          setPosition(width - 150);
         }
       } else {
         clearInterval(interval);
@@ -86,21 +91,18 @@ const Journey = () => {
 
   return (
     <>
-      <section className="w-screen h-[120vh] md:h-[150vh] flex flex-col justify-start px-4 md:px-0">
+      <section className="w-screen h-[100vh] md:h-[140vh] flex flex-col justify-center  px-4 md:px-0">
         <header className="w-full h-1/4 flex justify-center items-center text-center">
           <h1 className="text-4xl md:text-6xl  font-bold leading-tight">
-            Your Journey to <span className="text-[#FF1F52]">Food</span>
-            ,Simplified
+            Flow to <span className="text-[#FF1F52]">Food</span>, Simplified
           </h1>
         </header>
 
         <main className="w-full h-1/2 flex flex-col gap-6 overflow-hidden">
-          <div
-            className="w-full h-1/4 flex justify-center relative"
-            id="shop-person-section"
-          >
-            <div className="w-3/4 z-2 h-full relative">
+          <div className="w-full h-1/4 flex justify-center relative" id="shop-person-section">
+            <div className=" w-fit md:w-1/2  md:h-full relative">
               <img
+                ref={imageRef}
                 src="./images/shopbg.png"
                 alt="Shop Background"
                 className="h-full w-full "
@@ -112,7 +114,7 @@ const Journey = () => {
                 <img
                   src="./images/oofdiman1.png"
                   alt="Oofdi Man"
-                  className="w-full scale-40 translate-y-10"
+                  className="w-full scale-35 translate-y-10"
                 />
               </div>
             </div>
@@ -120,10 +122,7 @@ const Journey = () => {
 
           <div className="h-1/4 overflow-y-hidden"></div>
 
-          <div
-            className="w-full h-1/4 flex justify-between"
-            id="smart-phone-section"
-          >
+          <div className="w-full h-1/4 flex justify-between" id="smart-phone-section">
             <div className="w-1/4 hidden sm:block">
               <img src="./images/foodleft.png" alt="" />
             </div>

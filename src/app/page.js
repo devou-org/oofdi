@@ -10,7 +10,6 @@ import AreYou from "@/app/components/AreYou.jsx";
 import Testimonial from "@/app/components/Testimonial";
 import FeedbackForm from "@/app/components/FeedbackForm";
 import Footer from "@/app/components/Footer";
-
 export default function Page() {
   const [loading, setLoading] = useState(true);
 
