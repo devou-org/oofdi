@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Pizza,
   Fish,
@@ -41,23 +42,29 @@ export default function WhyUs() {
         {/* Left: stacked images */}
         <div className="flex flex-col h-auto">
           <div className="flex-1">
-            <img
+            <Image
               src="/images/veg.jpg"
               alt="Groceries"
+              width={1000}
+              height={667}
               className="w-full h-full object-cover"
             />
           </div>
           <div className="flex-1">
-            <img
+            <Image
               src="/images/Meat.jpg"
               alt="Meat"
+              width={1000}
+              height={667}
               className="w-full h-full object-cover"
             />
           </div>
           <div className="flex-1">
-            <img
+            <Image
               src="/images/Pharmacy.jpg"
               alt="Pharmacy"
+              width={1000}
+              height={667}
               className="w-full h-full object-cover"
             />
           </div>
@@ -88,7 +95,7 @@ export default function WhyUs() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
+                <Image
                   src="/images/GooglePlay.png"
                   alt="Get it on Google Play"
                   width={140}
@@ -104,12 +111,12 @@ export default function WhyUs() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
+                <Image
                   src="/images/Appstore.png"
                   alt="Download on the App Store"
                   width={200}
                   height={60}
-                  className="w-auto h-20 mb-5 mt-9 "
+                  className="w-auto h-20 mb-5 mt-9"
                 />
               </a>
             </div>
