@@ -1,12 +1,5 @@
-import Image from "next/image";
-import {
-  Pizza,
-  Fish,
-  BriefcaseMedical,
-  CreditCard,
-  Clock,
-  Star,
-} from "lucide-react";
+import { Pizza, Fish, BriefcaseMedical, CreditCard, Clock, Star } from "lucide-react";
+import Image from "next/image"; // ✅ FIXED: Added missing import
 
 const features = [
   { icon: <Pizza className="w-8 h-8 text-pink-500" />, text: "Wide Food & Grocery options" },
@@ -24,31 +17,13 @@ export default function WhyUs() {
         {/* Left: stacked images */}
         <div className="flex flex-col h-auto">
           <div className="flex-1">
-            <Image
-              src="/images/veg.jpg"
-              alt="Groceries"
-              width={1000}
-              height={667}
-              className="w-full h-full object-cover"
-            />
+            <img src="/images/veg.jpg" alt="Groceries" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1">
-            <Image
-              src="/images/Meat.jpg"
-              alt="Meat"
-              width={1000}
-              height={667}
-              className="w-full h-full object-cover"
-            />
+            <img src="/images/Meat.jpg" alt="Meat" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1">
-            <Image
-              src="/images/Pharmacy.jpg"
-              alt="Pharmacy"
-              width={1000}
-              height={667}
-              className="w-full h-full object-cover"
-            />
+            <img src="/images/Pharmacy.jpg" alt="Pharmacy" className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -82,7 +57,7 @@ export default function WhyUs() {
 
             <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
               <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">
-                <Image
+                <img
                   src="/images/Appstore.png"
                   alt="Download on the App Store"
                   width={200}

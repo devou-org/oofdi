@@ -1,6 +1,14 @@
 import React from "react";
 import Image from "next/image";
-import { ClipboardList, Truck, LineChart, Archive, MapPin, Bell, Wallet } from "lucide-react";
+import {
+  ClipboardList,
+  Truck,
+  LineChart,
+  Archive,
+  MapPin,
+  Bell,
+  Wallet,
+} from "lucide-react";
 
 export default function AreYou() {
   return (
@@ -54,7 +62,7 @@ export default function AreYou() {
             <div className="flex gap-4 mt-2">
               <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
                 <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
-                  <img
+                  <Image
                     src="/images/GooglePlay.png"
                     alt="Get it on Google Play"
                     width={140}
@@ -69,7 +77,7 @@ export default function AreYou() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img
+                  <Image
                     src="/images/Appstore.png"
                     alt="Download on the App Store"
                     width={200}
@@ -142,7 +150,7 @@ export default function AreYou() {
               <div className="flex gap-4 mt-2">
                 <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
                   <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
-                    <img
+                    <Image
                       src="/images/GooglePlay.png"
                       alt="Get it on Google Play"
                       width={140}
@@ -157,7 +165,7 @@ export default function AreYou() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img
+                    <Image
                       src="/images/Appstore.png"
                       alt="Download on the App Store"
                       width={200}
