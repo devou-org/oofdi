@@ -1,46 +1,41 @@
-"use client";
+// src/app/page.js
+import HomePage from "./seo/page";
 
-import { useEffect, useState } from "react";
-import HeroSection from "./hero/page";
-import About from "./about/page";
-import Journey from "./journey/page";
-import WhyUs from "@/app/components/WhyUs.jsx";
-import MoreThanFood from "@/app/components/MoreThanFood.jsx";
-import AreYou from "@/app/components/AreYou.jsx";
-import Testimonial from "@/app/components/Testimonial";
-import FeedbackForm from "@/app/components/FeedbackForm";
-import Footer from "@/app/components/Footer";
-export default function Page() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000); // 2.5s loader
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-screen w-screen bg-white z-50">
-        <img
-          src="/images/loading.gif" //loader gif
-          alt="Loading..."
-          className="w-28 h-28"
-        />
-      </div>
-    );
-  }
-
-  return (
-    <>
-      <HeroSection />
-      <About />
-      <Journey />
-      <WhyUs />
-      <MoreThanFood />
-      <AreYou />
-      <Testimonial />
-      <FeedbackForm />
-      <Footer />
-    </>
-  );
+export async function generateMetadata() {
+  return {
+    title: "OOFDI | Food, Groceries & Medicine Delivery",
+    description:
+      "Order food, groceries, fresh meat, and medicines across India with Oofdi – fast, reliable delivery at your fingertips.",
+    keywords: [
+      "food delivery India",
+      "online grocery delivery",
+      "fresh meat delivery",
+      "medicine delivery app",
+      "Oofdi app",
+      "food and grocery app",
+      "fast delivery service",
+      "online food order India",
+      "doorstep food delivery",
+      "contactless food delivery",
+    ],
+    openGraph: {
+      title: "OOFDI – Fast Food, Grocery & Medicine Delivery",
+      description:
+        "Your favourite food at your fingertips. Order from your favorite restaurants in minutes.",
+      url: "https://oofdi.vercel.app",
+      siteName: "OOFDI",
+      images: [
+        {
+          url: "/images/oofdilogo.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Oofdi Preview",
+        },
+      ],
+      type: "website",
+    },
+    robots: "index, follow",
+  };
 }
+
+export default HomePage;

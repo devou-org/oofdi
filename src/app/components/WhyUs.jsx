@@ -1,30 +1,13 @@
 import { Pizza, Fish, BriefcaseMedical, CreditCard, Clock, Star } from "lucide-react";
+import Image from "next/image"; // ✅ FIXED: Added missing import
 
 const features = [
-  {
-    icon: <Pizza className="w-8 h-8 text-pink-500" />,
-    text: "Wide Food & Grocery options",
-  },
-  {
-    icon: <Fish className="w-8 h-8 text-pink-500" />,
-    text: "Fresh Meat, Fish & Chicken Delivery",
-  },
-  {
-    icon: <BriefcaseMedical className="w-8 h-8 text-pink-500" />,
-    text: "Quick & Reliable Medicine Delivery",
-  },
-  {
-    icon: <CreditCard className="w-8 h-8 text-pink-500" />,
-    text: "Secure Payment",
-  },
-  {
-    icon: <Clock className="w-8 h-8 text-pink-500" />,
-    text: "Real-Time Order Tracking",
-  },
-  {
-    icon: <Star className="w-8 h-8 text-pink-500" />,
-    text: "Reviews & Ratings",
-  },
+  { icon: <Pizza className="w-8 h-8 text-pink-500" />, text: "Wide Food & Grocery options" },
+  { icon: <Fish className="w-8 h-8 text-pink-500" />, text: "Fresh Meat, Fish & Chicken Delivery" },
+  { icon: <BriefcaseMedical className="w-8 h-8 text-pink-500" />, text: "Quick & Reliable Medicine Delivery" },
+  { icon: <CreditCard className="w-8 h-8 text-pink-500" />, text: "Secure Payment" },
+  { icon: <Clock className="w-8 h-8 text-pink-500" />, text: "Real-Time Order Tracking" },
+  { icon: <Star className="w-8 h-8 text-pink-500" />, text: "Reviews & Ratings" },
 ];
 
 export default function WhyUs() {
@@ -62,7 +45,7 @@ export default function WhyUs() {
           <div className="flex gap-4 mt-2 flex-nowrap justify-center items-center">
             <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
               <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
-                <img
+                <Image
                   src="/images/GooglePlay.png"
                   alt="Get it on Google Play"
                   width={140}
@@ -79,7 +62,7 @@ export default function WhyUs() {
                   alt="Download on the App Store"
                   width={200}
                   height={60}
-                  className="w-auto h-20 mb-5 mt-9 "
+                  className="w-auto h-20 mb-5 mt-9"
                 />
               </a>
             </div>
