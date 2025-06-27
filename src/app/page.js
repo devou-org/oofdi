@@ -1,4 +1,5 @@
 // src/app/page.js
+//Dynamic SEO
 import HomePage from "./seo/page";
 
 export async function generateMetadata() {

@@ -19,7 +19,7 @@ export default function MoreThanFood() {
       </section>
       <div className="w-full mt-8">
         <Image
-          src="/images/Pharmacy2.jpg"
+          src="/images/Pharmacy2.webp"
           alt="More Than Food"
           width={1173}
           height={390}

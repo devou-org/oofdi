@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Star } from "lucide-react";
-import emailjs from "@emailjs/browser";
 
 export default function FeedbackForm() {
   const [rating, setRating] = useState(5);
@@ -10,7 +9,7 @@ export default function FeedbackForm() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!name || !message) {
@@ -20,32 +19,30 @@ export default function FeedbackForm() {
 
     setStatus("Sending...");
 
-    const templateParams = {
-      from_name: name,
-      message,
-      rating_stars: "⭐".repeat(rating),
-    };
+    try {
+      const emailjs = (await import("@emailjs/browser")).default;
 
-    emailjs
-      .send(
-        "service_6n8nyqs", // ✅ Your actual EmailJS service ID
-        "template_ioo5nk5", // ✅ Your actual EmailJS template ID
+      const templateParams = {
+        from_name: name,
+        message,
+        rating_stars: "⭐".repeat(rating),
+      };
+
+      await emailjs.send(
+        "service_6n8nyqs",
+        "template_ioo5nk5",
         templateParams,
-        "1Wi5ZQVNE43CMxKym" // ✅ Your actual EmailJS public key
-      )
-      .then(
-        (response) => {
-          console.log("SUCCESS!", response.status, response.text);
-          setStatus("Feedback sent successfully!");
-          setName("");
-          setMessage("");
-          setRating(5);
-        },
-        (err) => {
-          console.error("FAILED...", err);
-          setStatus("Something went wrong. Please try again.");
-        }
+        "1Wi5ZQVNE43CMxKym"
       );
+
+      setStatus("Feedback sent successfully!");
+      setName("");
+      setMessage("");
+      setRating(5);
+    } catch (err) {
+      console.error("FAILED...", err);
+      setStatus("Something went wrong. Please try again.");
+    }
   };
 
   return (

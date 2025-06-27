@@ -32,7 +32,7 @@ export default function AreYou() {
             {/* Mobile Image */}
             <div className="block md:hidden mb-6">
               <Image
-                src="/images/Vendor.jpg"
+                src="/images/Vendor.webp"
                 alt="Vendor"
                 width={420}
                 height={500}
@@ -63,7 +63,7 @@ export default function AreYou() {
               <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
                 <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
                   <Image
-                    src="/images/GooglePlay.png"
+                    src="/images/GooglePlay.webp"
                     alt="Get it on Google Play"
                     width={140}
                     height={42}
@@ -92,7 +92,7 @@ export default function AreYou() {
           {/* Right: Image (desktop only) */}
           <div className="hidden md:flex justify-center items-start mt-45">
             <Image
-              src="/images/Vendor.jpg"
+              src="/images/Vendor.webp"
               alt="Vendor"
               width={420}
               height={500}
@@ -118,7 +118,7 @@ export default function AreYou() {
             {/* Left: Image */}
             <div className="flex justify-center items-start mb-5">
               <Image
-                src="/images/Rider.jpg"
+                src="/images/Rider.webp"
                 alt="Rider"
                 width={480}
                 height={500}
@@ -151,7 +151,7 @@ export default function AreYou() {
                 <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
                   <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
                     <Image
-                      src="/images/GooglePlay.png"
+                      src="/images/GooglePlay.webp"
                       alt="Get it on Google Play"
                       width={140}
                       height={42}

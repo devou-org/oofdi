@@ -17,13 +17,13 @@ export default function WhyUs() {
         {/* Left: stacked images */}
         <div className="flex flex-col h-auto">
           <div className="flex-1">
-            <img src="/images/veg.jpg" alt="Groceries" className="w-full h-full object-cover" />
+            <img src="/images/veg.webp" alt="Groceries" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1">
-            <img src="/images/Meat.jpg" alt="Meat" className="w-full h-full object-cover" />
+            <img src="/images/Meat.webp" alt="Meat" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1">
-            <img src="/images/Pharmacy.jpg" alt="Pharmacy" className="w-full h-full object-cover" />
+            <img src="/images/Pharmacy.webp" alt="Pharmacy" className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -46,7 +46,7 @@ export default function WhyUs() {
             <div className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
               <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
                 <Image
-                  src="/images/GooglePlay.png"
+                  src="/images/GooglePlay.webp"
                   alt="Get it on Google Play"
                   width={140}
                   height={42}
