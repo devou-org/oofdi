@@ -1,5 +1,4 @@
 // src/app/seo/page.js
-//Client-side rendering for dynamic content
 "use client";
 
 import { useEffect, useState } from "react";
@@ -9,9 +8,19 @@ import Journey from "../journey/page";
 import WhyUs from "../components/WhyUs";
 import MoreThanFood from "../components/MoreThanFood";
 import AreYou from "../components/AreYou";
-import Testimonial from "../components/Testimonial";
-import FeedbackForm from "../components/FeedbackForm";
 import Footer from "../components/Footer";
+import dynamic from "next/dynamic";
+
+// Lazy load heavier components
+const Testimonial = dynamic(() => import("../components/Testimonial"), {
+  loading: () => <p className="text-center text-xl text-gray-400 my-10">Loading testimonials...</p>,
+  ssr: false,
+});
+
+const FeedbackForm = dynamic(() => import("../components/FeedbackForm"), {
+  loading: () => <p className="text-center text-xl text-gray-400 my-10">Loading feedback form...</p>,
+  ssr: false,
+});
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);

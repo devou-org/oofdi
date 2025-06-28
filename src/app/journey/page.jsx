@@ -103,7 +103,7 @@ const Journey = () => {
             <div className=" w-fit md:w-1/2  md:h-full relative">
               <img
                 ref={imageRef}
-                src="./images/shopbg.png"
+                src="./images/shopbg.webp"
                 alt="Shop Background"
                 className="h-full w-full "
               />
@@ -130,7 +130,7 @@ const Journey = () => {
             <div className="w-full sm:w-1/2 h-full scale-90 md:scale-50 flex justify-center items-center relative">
               <img
                 className="relative translate-y-10 md:translate-y-40"
-                src="./images/smartphone.png"
+                src="./images/smartphone.webp"
                 alt=""
               />
               <button

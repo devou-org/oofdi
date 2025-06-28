@@ -13,7 +13,7 @@ const About = () => {
       </div>
 
       <div className="w-full flex lg:h-3/4 h-64 sm:h-80 md:h-[28rem]">
-        <img src="./images/about.jpg" className="w-full h-full object-cover" alt="About Oofdi" />
+        <img src="./images/about.webp" className="w-full h-full object-cover" alt="About Oofdi" />
       </div>
     </section>
   );

@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../../firebaseConfig";
-import { useTestimonialsFirestore } from "@/app/Context/firebaseContext";
-import { saveTestimonial } from "@/app/utils/firebaseMedia";
+import { useTestimonialsFirestore } from "../../Context/firebaseContext";
+import { saveTestimonial } from "../../utils/firebaseMedia";
 
 const AdminTestimonial = () => {
   const [form, setForm] = useState({
@@ -42,10 +42,9 @@ const AdminTestimonial = () => {
           createdAt: new Date(),
         });
         alert("Testimonial added!");
-        fetchData(); // Refresh data after adding
+        fetchData();
       }
 
-      // Reset form
       setForm({ name: "", avatar: "", text: "", stars: 0 });
       setIsEditMode(false);
       setEditingId(null);
@@ -74,6 +73,7 @@ const AdminTestimonial = () => {
   const renderStars = (rating) => {
     return "★".repeat(rating) + "☆".repeat(5 - rating);
   };
+
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -85,7 +85,7 @@ const AdminTestimonial = () => {
 
     if (res.ok) {
       const { url } = await res.json();
-      setForm((prev) => ({ ...prev, avatar: url })); // set avatar URL in form
+      setForm((prev) => ({ ...prev, avatar: url }));
     } else {
       console.error("Failed to upload avatar.");
     }
@@ -93,7 +93,6 @@ const AdminTestimonial = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header Section */}
       <div className="bg-white border-b-4 border-[#FF1F52] py-8">
         <div className="max-w-6xl mx-auto px-4">
           <h1 className="text-4xl font-bold text-[#FF1F52] text-center mb-2">
@@ -107,7 +106,6 @@ const AdminTestimonial = () => {
 
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Form Section */}
           <div className="bg-white border-2 border-[#FF1F52] rounded-xl shadow-lg">
             <div className="bg-[#FF1F52] text-white py-4 px-6 rounded-t-xl">
               <h2 className="text-2xl font-bold">
@@ -127,7 +125,7 @@ const AdminTestimonial = () => {
                   onChange={handleChange}
                   required
                   placeholder="Enter customer name"
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#FF1F52] transition-colors"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#FF1F52]"
                 />
               </div>
 
@@ -164,20 +162,20 @@ const AdminTestimonial = () => {
                   required
                   rows={4}
                   placeholder="Enter customer testimonial..."
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#FF1F52] transition-colors resize-none"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#FF1F52] resize-none"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Rating (1-5 Stars)
+                  Rating (1–5 Stars)
                 </label>
                 <select
                   name="stars"
                   value={form.stars}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#FF1F52] transition-colors"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#FF1F52]"
                 >
                   <option value="">Select rating</option>
                   <option value="1">⭐ 1 Star</option>
@@ -191,16 +189,15 @@ const AdminTestimonial = () => {
               <div className="flex gap-3">
                 <button
                   type="submit"
-                  className="flex-1 bg-[#FF1F52] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#e01a47] transition-colors duration-200"
+                  className="flex-1 bg-[#FF1F52] text-white py-3 px-6 rounded-lg hover:bg-[#e01a47]"
                 >
                   {isEditMode ? "Update Testimonial" : "Add Testimonial"}
                 </button>
-
                 {isEditMode && (
                   <button
                     type="button"
                     onClick={handleCancelEdit}
-                    className="flex-1 bg-gray-500 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors duration-200"
+                    className="flex-1 bg-gray-500 text-white py-3 px-6 rounded-lg hover:bg-gray-600"
                   >
                     Cancel
                   </button>
@@ -209,7 +206,6 @@ const AdminTestimonial = () => {
             </form>
           </div>
 
-          {/* Stats Section */}
           <div className="space-y-6">
             <div className="bg-white border-2 border-[#FF1F52] rounded-xl shadow-lg">
               <div className="bg-[#FF1F52] text-white py-4 px-6 rounded-t-xl">
@@ -237,25 +233,9 @@ const AdminTestimonial = () => {
                 </div>
               </div>
             </div>
-            {/* 
-            <div className="bg-white border-2 border-[#FF1F52] rounded-xl shadow-lg">
-              <div className="bg-[#FF1F52] text-white py-4 px-6 rounded-t-xl">
-                <h3 className="text-xl font-bold">Quick Actions</h3>
-              </div>
-              <div className="p-6 space-y-3">
-                <button 
-                  onClick={fetchData}
-                  className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-lg transition-colors"
-                >
-                  Refresh Data
-                </button>
-             
-              </div>
-            </div> */}
           </div>
         </div>
 
-        {/* Testimonials List Section */}
         <div className="mt-12">
           <div className="bg-white border-2 border-[#FF1F52] rounded-xl shadow-lg">
             <div className="bg-[#FF1F52] text-white py-4 px-6 rounded-t-xl">
@@ -274,7 +254,7 @@ const AdminTestimonial = () => {
                   {testimonialData.map((testimonial) => (
                     <div
                       key={testimonial.id}
-                      className="bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
+                      className="bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow"
                     >
                       <div className="p-6">
                         <div className="flex items-center mb-4">
@@ -283,7 +263,9 @@ const AdminTestimonial = () => {
                             alt={testimonial.name}
                             className="w-12 h-12 rounded-full object-cover mr-3 border-2 border-[#FF1F52]"
                             onError={(e) => {
-                              e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=FF1F52&color=ffffff`;
+                              e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                                testimonial.name
+                              )}&background=FF1F52&color=ffffff`;
                             }}
                           />
                           <div>
@@ -299,19 +281,17 @@ const AdminTestimonial = () => {
                         <div className="flex gap-2">
                           <button
                             onClick={() => handleEdit(testimonial)}
-                            className="flex-1 bg-green-500 text-white text-sm font-semibold py-2 px-3 rounded hover:bg-green-600 transition-colors"
+                            className="flex-1 bg-green-500 text-white text-sm font-semibold py-2 px-3 rounded hover:bg-green-600"
                           >
                             Edit
                           </button>
                           <button
                             onClick={() => {
-                              if (
-                                window.confirm("Are you sure you want to delete this testimonial?")
-                              ) {
+                              if (window.confirm("Are you sure you want to delete this testimonial?")) {
                                 deleteTestimonial(testimonial.id);
                               }
                             }}
-                            className="flex-1 bg-red-500 text-white text-sm font-semibold py-2 px-3 rounded hover:bg-red-600 transition-colors"
+                            className="flex-1 bg-red-500 text-white text-sm font-semibold py-2 px-3 rounded hover:bg-red-600"
                           >
                             Delete
                           </button>

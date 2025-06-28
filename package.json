@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "source-map-explorer .next/static/chunks/*.js"
+
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -23,6 +25,9 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "@types/react": "19.1.8",
+    "source-map-explorer": "^2.5.3",
+    "tailwindcss": "^4",
+    "typescript": "5.8.3"
   }
 }
