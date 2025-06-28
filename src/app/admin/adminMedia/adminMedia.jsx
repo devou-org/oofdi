@@ -1,6 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { useMedia } from "@/app/Context/blobContext";
+
+// ✅ Fixed import path for Context
+import { useMedia } from "../../Context/blobContext";
+
+// ✅ Fixed import path for utils
 import { saveMediaUrls, deleteMediaUrl } from "../../utils/firebaseMedia";
 
 export default function AdminMedia() {
@@ -20,6 +24,7 @@ export default function AdminMedia() {
     if (res.ok) {
       const { url } = await res.json();
       if (type === "image") setImageUrl(url);
+      if (type === "video") setVideoUrl(url);
       setStatus(`${type} uploaded and saved!`);
     } else {
       setStatus(`Failed to upload ${type}.`);
