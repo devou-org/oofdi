@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   productionBrowserSourceMaps: true,
+  productionBrowserSourceMaps: true,
   images: {
-    domains: ["lctxyrzuihzeq9gs.public.blob.vercel-storage.com"], // your blob domain
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "lctxyrzuihzeq9gs.public.blob.vercel-storage.com",
+      },
+    ],
   },
 };
 
