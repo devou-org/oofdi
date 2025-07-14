@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "analyze": "source-map-explorer .next/static/chunks/*.js"
-
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

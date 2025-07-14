@@ -75,7 +75,7 @@ export default function RootLayout({ children }) {
           as="image"
           href="/images/mandhi.avif"
           type="image/avif"
-          fetchpriority="high"
+          fetchPriority="high"
         />
 
         {/*  Canonical tag */}
