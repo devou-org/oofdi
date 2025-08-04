@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white px-12 py-16">
+    <footer className="bg-black text-white px-12 pt-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 items-start">
         {/* Logo Section */}
         <div>
@@ -97,6 +97,11 @@ export default function Footer() {
             </li>
           </ul>
         </div>
+      </div>
+
+      {/* Made by Devou */}
+      <div className="text-center text-gray-400 mt-5">
+        Made by Devou
       </div>
     </footer>
   );
