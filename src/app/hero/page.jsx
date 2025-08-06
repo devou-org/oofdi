@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useRef, useEffect, useState } from "react";
 import { useTransform, motion, useScroll } from "framer-motion";
@@ -15,7 +15,6 @@ const HeroSection = () => {
   const [isMobile, setIsMobile] = useState(false);
   const { imageUrl, setVideoUrl, videoUrl } = useMedia();
 
-  // Reduce JS + skip video load on mobile
   useEffect(() => {
     const checkMobile = () => {
       const mobile = window.innerWidth <= 768;
@@ -28,12 +27,36 @@ const HeroSection = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const leftWidth = useTransform(scrollYProgress, [0.4, 0.5], isMobile ? ["100%", "100%"] : ["50%", "100%"]);
-  const leftScale = useTransform(scrollYProgress, [0.4, 0.5], isMobile ? [1, 1] : [1, 1.05]);
-  const rightOpacity = useTransform(scrollYProgress, [0.4, 0.5], isMobile ? [1, 1] : [1, 0]);
-  const rightScale = useTransform(scrollYProgress, [0.4, 0.5], isMobile ? [1, 1] : [1, 0.95]);
-  const opacity = useTransform(scrollYProgress, [0.4, 0.6], isMobile ? [1, 1] : [1, 0]);
-  const newopacity = useTransform(scrollYProgress, [0.65, 0.75], isMobile ? [0, 0] : [0, 1.5]);
+  const leftWidth = useTransform(
+    scrollYProgress,
+    [0.4, 0.5],
+    isMobile ? ["100%", "100%"] : ["50%", "100%"]
+  );
+  const leftScale = useTransform(
+    scrollYProgress,
+    [0.4, 0.5],
+    isMobile ? [1, 1] : [1, 1.05]
+  );
+  const rightOpacity = useTransform(
+    scrollYProgress,
+    [0.4, 0.5],
+    isMobile ? [1, 1] : [1, 0]
+  );
+  const rightScale = useTransform(
+    scrollYProgress,
+    [0.4, 0.5],
+    isMobile ? [1, 1] : [1, 0.95]
+  );
+  const opacity = useTransform(
+    scrollYProgress,
+    [0.4, 0.6],
+    isMobile ? [1, 1] : [1, 0]
+  );
+  const newopacity = useTransform(
+    scrollYProgress,
+    [0.65, 0.75],
+    isMobile ? [0, 0] : [0, 1.5]
+  );
 
   return (
     <section
@@ -76,11 +99,11 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Skip video on mobile to reduce JS */}
+          {/* Desktop video */}
           {!isMobile && (
             <motion.div
               style={{ opacity: newopacity }}
-              className="hidden md:flex w-screen h-1/2 flex-col justify-center md:justify-end items-center absolute top-0 left-0 -z-10"
+              className="hidden md:flex w-screen h-1/2 flex-col justify-center md:justify-end items-center absolute top-0 left-0 z-0"
             >
               <video
                 preload="auto"
@@ -93,8 +116,14 @@ const HeroSection = () => {
                 className="w-full h-screen object-cover absolute inset-0 z-0"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-transparent opacity-70 z-10 h-screen"></div>
+
+              {/* Loading and Headline */}
               <div className="h-1/2 flex flex-col items-center justify-start z-20">
-                <img className="w-20 md:w-40 h-20 md:h-40" src="./images/loading.gif" alt="Loading animation" />
+                <img
+                  className="w-20 md:w-40 h-20 md:h-40"
+                  src="./images/loading.gif"
+                  alt="Loading animation"
+                />
                 <h1 className="text-3xl text-white md:text-6xl font-bold text-center mb-6 p-4">
                   <span className="text-[#FF1F52]">O</span>nline{" "}
                   <span className="text-[#FF1F52]">O</span>rdering{" "}
@@ -102,23 +131,38 @@ const HeroSection = () => {
                   <span className="text-[#FF1F52]">D</span>elivery{" "}
                   <span className="text-[#FF1F52]">I</span>nstantly
                 </h1>
-                <div className="flex gap-4 mt-2">
-                  <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
-                    <img
+
+                {/* Download Buttons */}
+                <div className="flex gap-4 mt-2 flex-nowrap justify-center items-center">
+                  {/* Google Play */}
+                  <a
+                    href="https://play.google.com/store"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1 mb-4"
+                  >
+                    <Image
                       src="/images/GooglePlay.webp"
                       alt="Get it on Google Play"
                       width={140}
                       height={42}
-                      className="w-auto h-12 mt-4"
+                      className="w-auto h-12 mt-4 rounded-lg"
                     />
                   </a>
-                  <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">
-                    <img
-                      src="/images/appstorebgwhite.webp"
+
+                  {/* Apple Store - with white background and rounded corners */}
+                  <a
+                    href="https://www.apple.com/app-store/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-2 py-1 rounded-lg transform transition-transform duration-300 hover:scale-105 hover:-translate-y-1"
+                  >
+                    <Image
+                      src="/images/Appstore2.png"
                       alt="Download on the App Store"
-                      width={250}
-                      height={80}
-                      className="w-auto h-20 mb-20"
+                      width={140}
+                      height={42}
+                      className="w-auto h-12 rounded-lg"
                     />
                   </a>
                 </div>
@@ -127,7 +171,7 @@ const HeroSection = () => {
           )}
         </motion.div>
 
-        {/* Right Image (LCP Optimized) */}
+        {/* Right Image */}
         <motion.div
           className={`h-screen ${isMobile ? "block" : "hidden md:block"}`}
           style={{
