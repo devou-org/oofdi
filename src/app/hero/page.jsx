@@ -150,7 +150,7 @@ const HeroSection = () => {
                     />
                   </a>
 
-                  {/* Apple Store - with white background and rounded corners */}
+                  {/* Apple Store button */}
                   <a
                     href="https://www.apple.com/app-store/"
                     target="_blank"
