@@ -68,7 +68,7 @@ export default function RootLayout({ children }) {
         {/* Preconnect to Google Fonts to reduce render delay */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-
+        
         {/* Preload LCP image */}
         <link
           rel="preload"
@@ -80,6 +80,7 @@ export default function RootLayout({ children }) {
 
         {/*  Canonical tag */}
         <link rel="canonical" href="https://oofdi.vercel.app/" />
+        <meta name="google-site-verification" content="3AFKgVsoOY1ztrXlpfCK6QUuJhGVlPkXhVa3QfU6ClQ" />
       </head>
       <body className={`${monoSans.variable} overflow-x-hidden`}>
         <FirestoreProvider>
