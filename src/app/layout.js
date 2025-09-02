@@ -139,8 +139,8 @@ export const metadata = {
   openGraph: {
     title: "Oofdi – Fast Food, Grocery & Medicine Delivery",
     description:
-      "Your favourite food at your fingertips. Order from your favorite restaurants in minutes.",
-    url: "https://oofdi.vercel.app",
+      "OOFDI is your all-in-one delivery app in Kozhikode, offering fast and reliable food, grocery, and medicine delivery. From organic and healthy meals to homestyle tiffins, farm-fresh produce, and eco-friendly packaging, we bring your favorite local restaurants, chefs, and stores to your doorstep in minutes.",
+    url: "https://oofdi.com",
     siteName: "OOFDI",
     images: [
       {
