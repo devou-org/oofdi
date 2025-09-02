@@ -15,7 +15,7 @@ const monoSans = Mona_Sans({
 export const metadata = {
   title: "OOFDI",
   description:
-    "OOFDI is your all-in-one delivery app in Kozhikode, offering fast and reliable food, grocery, and medicine delivery. From organic and healthy meals to homestyle tiffins, farm-fresh produce, and eco-friendly packaging, we bring your favorite local restaurants, chefs, and stores to your doorstep in minutes."
+    "OOFDI is your all-in-one delivery app in Kozhikode, offering fast and reliable food, grocery, and medicine delivery. From organic and healthy meals to homestyle tiffins, farm-fresh produce, and eco-friendly packaging, we bring your favorite local restaurants, chefs, and stores to your doorstep in minutes.",
   keywords: [
     "organic food delivery Kozhikode",
     "healthy tiffin delivery Kozhikode",
