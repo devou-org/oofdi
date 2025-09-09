@@ -100,9 +100,18 @@ export default function Footer() {
       </div>
 
       {/* Made by Devou */}
-      <div className="text-center text-gray-400 mt-5">
-        Made by Devou
-      </div>
+     <div className="text-center text-gray-400 mt-5">
+          Made by{" "}
+       <a
+           href="https://devou.in"
+           target="_blank"
+           rel="noopener noreferrer"
+          className="hover:underline"
+       >
+      Devou
+  </a>
+</div>
+
     </footer>
   );
 }
